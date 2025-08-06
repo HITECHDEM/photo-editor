@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Studio - Современный редактор фотографий</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <i class="fas fa-camera"></i>
+                <span>Photo Studio</span>
+            </div>
+            <div class="header-controls">
+                <button id="uploadBtn" class="btn btn-primary">
+                    <i class="fas fa-upload"></i> Загрузить фото
+                </button>
+                <button id="saveBtn" class="btn btn-success" disabled>
+                    <i class="fas fa-save"></i> Сохранить
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="editor-container">
+                <div class="canvas-wrapper">
+                    <canvas id="imageCanvas" width="800" height="600"></canvas>
+                    <div class="canvas-overlay">
+                        <div class="crop-overlay" id="cropOverlay" style="display: none;">
+                            <div class="crop-handle crop-handle-nw"></div>
+                            <div class="crop-handle crop-handle-ne"></div>
+                            <div class="crop-handle crop-handle-sw"></div>
+                            <div class="crop-handle crop-handle-se"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="toolbar">
+                <div class="tool-section">
+                    <h3><i class="fas fa-crop"></i> Обрезка</h3>
+                    <button id="cropBtn" class="tool-btn">
+                        <i class="fas fa-crop-alt"></i>
+                        <span>Обрезать</span>
+                    </button>
+                    <button id="rotateBtn" class="tool-btn">
+                        <i class="fas fa-redo"></i>
+                        <span>Повернуть</span>
+                    </button>
+                </div>
+
+                <div class="tool-section">
+                    <h3><i class="fas fa-magic"></i> Фильтры</h3>
+                    <div class="filter-grid">
+                        <button class="filter-btn" data-filter="none">Оригинал</button>
+                        <button class="filter-btn" data-filter="vintage">Винтаж</button>
+                        <button class="filter-btn" data-filter="blackwhite">Ч/Б</button>
+                        <button class="filter-btn" data-filter="sepia">Сепия</button>
+                        <button class="filter-btn" data-filter="cool">Холодный</button>
+                        <button class="filter-btn" data-filter="warm">Теплый</button>
+                        <button class="filter-btn" data-filter="dramatic">Драматичный</button>
+                        <button class="filter-btn" data-filter="fade">Выцветший</button>
+                    </div>
+                </div>
+
+                <div class="tool-section">
+                    <h3><i class="fas fa-sliders-h"></i> Настройки</h3>
+                    <div class="slider-control">
+                        <label>Яркость</label>
+                        <input type="range" id="brightnessSlider" min="0" max="200" value="100">
+                        <span class="slider-value">100</span>
+                    </div>
+                    <div class="slider-control">
+                        <label>Контраст</label>
+                        <input type="range" id="contrastSlider" min="0" max="200" value="100">
+                        <span class="slider-value">100</span>
+                    </div>
+                    <div class="slider-control">
+                        <label>Насыщенность</label>
+                        <input type="range" id="saturationSlider" min="0" max="200" value="100">
+                        <span class="slider-value">100</span>
+                    </div>
+                    <div class="slider-control">
+                        <label>Размытие</label>
+                        <input type="range" id="blurSlider" min="0" max="10" value="0">
+                        <span class="slider-value">0</span>
+                    </div>
+                </div>
+
+                <div class="tool-section">
+                    <h3><i class="fas fa-palette"></i> Эффекты</h3>
+                    <button id="vignetteBtn" class="tool-btn">
+                        <i class="fas fa-circle"></i>
+                        <span>Виньетка</span>
+                    </button>
+                    <button id="grainBtn" class="tool-btn">
+                        <i class="fas fa-dot-circle"></i>
+                        <span>Зернистость</span>
+                    </button>
+                    <button id="blurBtn" class="tool-btn">
+                        <i class="fas fa-eye-slash"></i>
+                        <span>Размытие</span>
+                    </button>
+                    <button id="sharpenBtn" class="tool-btn">
+                        <i class="fas fa-eye"></i>
+                        <span>Резкость</span>
+                    </button>
+                </div>
+
+                <div class="tool-section">
+                    <h3><i class="fas fa-magic"></i> Дополнительные фильтры</h3>
+                    <div class="filter-grid">
+                        <button class="filter-btn" data-filter="neon">Неон</button>
+                        <button class="filter-btn" data-filter="sunset">Закат</button>
+                        <button class="filter-btn" data-filter="cyberpunk">Киберпанк</button>
+                        <button class="filter-btn" data-filter="retro">Ретро</button>
+                        <button class="filter-btn" data-filter="monochrome">Монохром</button>
+                        <button class="filter-btn" data-filter="duotone">Дуотон</button>
+                    </div>
+                </div>
+
+                <div class="tool-section">
+                    <h3><i class="fas fa-crop-alt"></i> Трансформации</h3>
+                    <button id="flipHBtn" class="tool-btn">
+                        <i class="fas fa-arrows-alt-h"></i>
+                        <span>Отразить по горизонтали</span>
+                    </button>
+                    <button id="flipVBtn" class="tool-btn">
+                        <i class="fas fa-arrows-alt-v"></i>
+                        <span>Отразить по вертикали</span>
+                    </button>
+                    <button id="resetBtn" class="tool-btn">
+                        <i class="fas fa-undo"></i>
+                        <span>Сбросить все</span>
+                    </button>
+                </div>
+            </aside>
+        </main>
+
+        <div class="status-bar">
+            <span id="statusText">Готов к работе</span>
+            <div class="progress-bar" id="progressBar" style="display: none;">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+    
+    <script src="script.js"></script>
+</body>
+</html> 
