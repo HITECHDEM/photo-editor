@@ -287,7 +287,7 @@ class PhotoEditor {
         tempCanvas.height = this.canvas.height;
 
         // Start with the current image (which may have filters applied)
-        let sourceImage = this.currentImage;
+        let sourceImage = this.originalImage;
         
         // Draw the source image
         tempCtx.drawImage(
@@ -825,7 +825,7 @@ class PhotoEditor {
         
         // Draw image
         this.ctx.drawImage(
-            this.currentImage,
+            this.originalImage,
             -this.imageBounds.width / 2,
             -this.imageBounds.height / 2,
             this.imageBounds.width,
