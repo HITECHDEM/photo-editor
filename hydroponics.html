@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лучшие растения для домашней гидропоники</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .intro-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .intro-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .plants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .plant-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .plant-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .plant-image {
+            height: 200px;
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .plant-content {
+            padding: 25px;
+        }
+
+        .plant-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .difficulty {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .difficulty.easy {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+
+        .difficulty.medium {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+        .difficulty.hard {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .plant-info {
+            margin-bottom: 15px;
+        }
+
+        .plant-info h4 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .plant-info ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .plant-info li {
+            padding: 5px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .plant-info li:last-child {
+            border-bottom: none;
+        }
+
+        .plant-info i {
+            color: #4CAF50;
+            width: 16px;
+        }
+
+        .tips-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .tips-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .tip-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .tip-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tip-card i {
+            color: #4CAF50;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+
+        .footer p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .plants-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-seedling"></i> Лучшие растения для домашней гидропоники</h1>
+            <p>Откройте для себя идеальные культуры для выращивания без почвы</p>
+        </header>
+
+        <section class="intro-section">
+            <h2><i class="fas fa-info-circle"></i> Что такое гидропоника?</h2>
+            <p>Гидропоника — это метод выращивания растений без использования почвы, где питательные вещества доставляются к корням через водный раствор. Этот метод идеально подходит для домашнего выращивания, так как занимает мало места, не требует прополки и позволяет получать свежие овощи круглый год.</p>
+            <p>Выбирая растения для гидропоники, важно учитывать их требования к питательным веществам, pH воды и температуре окружающей среды.</p>
+        </section>
+
+        <div class="plants-grid">
+            <!-- Салат -->
+            <div class="plant-card">
+                <div class="plant-image">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="plant-content">
+                    <h3 class="plant-title">
+                        <i class="fas fa-leaf"></i>
+                        Салат (Lactuca sativa)
+                    </h3>
+                    <span class="difficulty easy">Легко выращивать</span>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-clock"></i> Время выращивания</h4>
+                        <ul>
+                            <li><i class="fas fa-calendar"></i> 30-45 дней до сбора урожая</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-thermometer-half"></i> Условия выращивания</h4>
+                        <ul>
+                            <li><i class="fas fa-temperature-high"></i> Температура: 18-22°C</li>
+                            <li><i class="fas fa-tint"></i> pH: 6.0-7.0</li>
+                            <li><i class="fas fa-sun"></i> Освещение: 12-16 часов в день</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-star"></i> Преимущества</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Быстрый рост</li>
+                            <li><i class="fas fa-check"></i> Не требует много места</li>
+                            <li><i class="fas fa-check"></i> Можно собирать листья постепенно</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Базилик -->
+            <div class="plant-card">
+                <div class="plant-image">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <div class="plant-content">
+                    <h3 class="plant-title">
+                        <i class="fas fa-seedling"></i>
+                        Базилик (Ocimum basilicum)
+                    </h3>
+                    <span class="difficulty easy">Легко выращивать</span>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-clock"></i> Время выращивания</h4>
+                        <ul>
+                            <li><i class="fas fa-calendar"></i> 30-60 дней до сбора урожая</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-thermometer-half"></i> Условия выращивания</h4>
+                        <ul>
+                            <li><i class="fas fa-temperature-high"></i> Температура: 20-25°C</li>
+                            <li><i class="fas fa-tint"></i> pH: 5.5-6.5</li>
+                            <li><i class="fas fa-sun"></i> Освещение: 14-16 часов в день</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-star"></i> Преимущества</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Ароматные листья</li>
+                            <li><i class="fas fa-check"></i> Непрерывный сбор урожая</li>
+                            <li><i class="fas fa-check"></i> Отпугивает насекомых</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Помидоры -->
+            <div class="plant-card">
+                <div class="plant-image">
+                    <i class="fas fa-apple-alt"></i>
+                </div>
+                <div class="plant-content">
+                    <h3 class="plant-title">
+                        <i class="fas fa-apple-alt"></i>
+                        Помидоры (Solanum lycopersicum)
+                    </h3>
+                    <span class="difficulty medium">Средняя сложность</span>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-clock"></i> Время выращивания</h4>
+                        <ul>
+                            <li><i class="fas fa-calendar"></i> 60-80 дней до сбора урожая</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-thermometer-half"></i> Условия выращивания</h4>
+                        <ul>
+                            <li><i class="fas fa-temperature-high"></i> Температура: 20-28°C</li>
+                            <li><i class="fas fa-tint"></i> pH: 5.5-6.5</li>
+                            <li><i class="fas fa-sun"></i> Освещение: 16-18 часов в день</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-star"></i> Преимущества</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Высокая урожайность</li>
+                            <li><i class="fas fa-check"></i> Отличный вкус</li>
+                            <li><i class="fas fa-check"></i> Много сортов</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Огурцы -->
+            <div class="plant-card">
+                <div class="plant-image">
+                    <i class="fas fa-carrot"></i>
+                </div>
+                <div class="plant-content">
+                    <h3 class="plant-title">
+                        <i class="fas fa-carrot"></i>
+                        Огурцы (Cucumis sativus)
+                    </h3>
+                    <span class="difficulty medium">Средняя сложность</span>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-clock"></i> Время выращивания</h4>
+                        <ul>
+                            <li><i class="fas fa-calendar"></i> 50-70 дней до сбора урожая</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-thermometer-half"></i> Условия выращивания</h4>
+                        <ul>
+                            <li><i class="fas fa-temperature-high"></i> Температура: 22-28°C</li>
+                            <li><i class="fas fa-tint"></i> pH: 5.5-6.0</li>
+                            <li><i class="fas fa-sun"></i> Освещение: 14-16 часов в день</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-star"></i> Преимущества</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Быстрый рост</li>
+                            <li><i class="fas fa-check"></i> Высокая урожайность</li>
+                            <li><i class="fas fa-check"></i> Требует вертикальной опоры</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Клубника -->
+            <div class="plant-card">
+                <div class="plant-image">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="plant-content">
+                    <h3 class="plant-title">
+                        <i class="fas fa-heart"></i>
+                        Клубника (Fragaria × ananassa)
+                    </h3>
+                    <span class="difficulty hard">Сложно выращивать</span>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-clock"></i> Время выращивания</h4>
+                        <ul>
+                            <li><i class="fas fa-calendar"></i> 60-90 дней до сбора урожая</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-thermometer-half"></i> Условия выращивания</h4>
+                        <ul>
+                            <li><i class="fas fa-temperature-high"></i> Температура: 18-25°C</li>
+                            <li><i class="fas fa-tint"></i> pH: 5.5-6.5</li>
+                            <li><i class="fas fa-sun"></i> Освещение: 12-14 часов в день</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-star"></i> Преимущества</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Сладкие плоды</li>
+                            <li><i class="fas fa-check"></i> Компактные растения</li>
+                            <li><i class="fas fa-check"></i> Многолетние</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Перец -->
+            <div class="plant-card">
+                <div class="plant-image">
+                    <i class="fas fa-pepper-hot"></i>
+                </div>
+                <div class="plant-content">
+                    <h3 class="plant-title">
+                        <i class="fas fa-pepper-hot"></i>
+                        Перец (Capsicum annuum)
+                    </h3>
+                    <span class="difficulty medium">Средняя сложность</span>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-clock"></i> Время выращивания</h4>
+                        <ul>
+                            <li><i class="fas fa-calendar"></i> 70-90 дней до сбора урожая</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-thermometer-half"></i> Условия выращивания</h4>
+                        <ul>
+                            <li><i class="fas fa-temperature-high"></i> Температура: 22-30°C</li>
+                            <li><i class="fas fa-tint"></i> pH: 5.5-6.5</li>
+                            <li><i class="fas fa-sun"></i> Освещение: 14-16 часов в день</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plant-info">
+                        <h4><i class="fas fa-star"></i> Преимущества</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Много сортов</li>
+                            <li><i class="fas fa-check"></i> Длительное плодоношение</li>
+                            <li><i class="fas fa-check"></i> Компактные растения</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="tips-section">
+            <h2><i class="fas fa-lightbulb"></i> Советы по выращиванию</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3><i class="fas fa-tint"></i> Контроль pH</h3>
+                    <p>Регулярно проверяйте pH раствора. Большинство растений предпочитают pH от 5.5 до 6.5. Используйте pH-метр или тест-полоски для контроля.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h3><i class="fas fa-thermometer-half"></i> Температура</h3>
+                    <p>Поддерживайте оптимальную температуру для каждого растения. Большинство культур хорошо растут при 18-25°C. Избегайте резких перепадов температуры.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h3><i class="fas fa-sun"></i> Освещение</h3>
+                    <p>Обеспечьте достаточное освещение. Используйте LED-лампы для растений или размещайте систему у окна. Большинству растений нужно 12-16 часов света в день.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h3><i class="fas fa-recycle"></i> Замена раствора</h3>
+                    <p>Меняйте питательный раствор каждые 1-2 недели. Это предотвращает накопление солей и обеспечивает растения необходимыми питательными веществами.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h3><i class="fas fa-seedling"></i> Начало выращивания</h3>
+                    <p>Начните с простых культур, таких как салат и базилик. Они прощают ошибки новичков и быстро растут, что мотивирует продолжать эксперименты.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <h3><i class="fas fa-bug"></i> Профилактика болезней</h3>
+                    <p>Следите за чистотой системы. Регулярно промывайте резервуары и корни растений. Используйте стерильные инструменты при работе с растениями.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2024 Гидропоника дома. Создано с <i class="fas fa-heart" style="color: #ff6b6b;"></i> для любителей домашнего выращивания</p>
+        </footer>
+    </div>
+</body>
+</html>
